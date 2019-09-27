@@ -34,7 +34,7 @@
 </template>
 
 <script>
-    const data = require('@/data/sample.json')
+    const data = require('@/data/category.json')
 
     export default {
         data() {
