@@ -16,6 +16,10 @@
             <p>You can add your custom footer to the autocomplete.</p>
         </Example>
 
+         <Example :component="ExMiddle" :code="ExMiddleCode" title="Middle">
+            <p>You can add your custom presentation of result to the autocomplete.</p>
+        </Example>
+
         <Example :component="ExCustomAsync" :code="ExCustomAsyncCode" title="Async with custom template">
             <p>You can have a custom template by adding a scoped slot to it.</p>
             <p><small>API from <a href="https://www.themoviedb.org" target="_blank">TMDb</a></small>.</p>
@@ -34,6 +38,9 @@
     import ExObjArray from './examples/ExObjArray'
     import ExObjArrayCode from '!!raw-loader!./examples/ExObjArray'
 
+    import ExMiddle from './examples/ExMiddle'
+    import ExMiddleCode from '!!raw-loader!./examples/ExMiddle'
+
     import ExHeader from './examples/ExHeader'
     import ExHeaderCode from '!!raw-loader!./examples/ExHeader'
 
@@ -51,6 +58,8 @@
                 ExSimpleCode,
                 ExObjArrayCode,
                 ExObjArray,
+                ExMiddleCode,
+                ExMiddle,
                 ExHeader,
                 ExHeaderCode,
                 ExFooter,

@@ -35,22 +35,29 @@
                         class="dropdown-item">
                         <slot name="header"/>
                     </div>
-                    <a
-                        v-for="(option, index) in data"
-                        :key="index"
-                        class="dropdown-item"
-                        :class="{ 'is-hovered': option === hovered }"
-                        @click="setSelected(option)">
+                    <div
+                        v-if="hasMiddleSlot"
+                        class="dropdown-item">
+                        <slot name="middle"/>
+                    </div>
+                    <div v-if="!hasMiddleSlot">
+                        <a
+                            v-for="(option, index) in data"
+                            :key="index"
+                            class="dropdown-item"
+                            :class="{ 'is-hovered': option === hovered }"
+                            @click="setSelected(option)">
 
-                        <slot
-                            v-if="hasDefaultSlot"
-                            :option="option"
-                            :index="index"
-                        />
-                        <span v-else>
-                            {{ getValue(option, true) }}
-                        </span>
-                    </a>
+                            <slot
+                                v-if="hasDefaultSlot"
+                                :option="option"
+                                :index="index"
+                            />
+                            <span v-else>
+                                {{ getValue(option, true) }}
+                            </span>
+                        </a>
+                    </div>
                     <div
                         v-if="data.length === 0 && hasEmptySlot"
                         class="dropdown-item is-disabled">
@@ -146,6 +153,13 @@ export default {
          */
         hasHeaderSlot() {
             return !!this.$slots.header
+        },
+
+        /**
+        * Check if exists "middle" slot
+        */
+        hasMiddleSlot() {
+            return !!this.$slots.middle
         },
 
         /**
