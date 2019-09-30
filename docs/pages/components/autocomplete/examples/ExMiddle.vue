@@ -11,22 +11,29 @@
                 field="user.first_name"
                 @select="option => selected = option">
                 <template slot="middle" slot-scope="props">
-                   <a
-                            v-for="(option, index) in data"
-                            :key="index"
+                  <label
                             class="dropdown-item"
-                            :class="{ 'is-hovered': option === hovered }"
-                            @click="setSelected(option)">
+                            v-for="valCategory in listOfCategory"
+                            :key="valCategory">
+                            <span class="category">{{ valCategory }}</span>
+                            <a
+                                v-for="(option, index) in
+                                data.filter(cat => cat.category==valCategory)"
+                                :key="index"
+                                class="dropdown-item"
+                                :class="{ 'is-hovered': option === hovered }"
+                                @click="setSelected(option)">
 
-                            <slot
-                                v-if="hasDefaultSlot"
-                                :option="option"
-                                :index="index"
-                            />
-                            <span v-else>
-                                {{ getValue(option, true) }}
-                            </span>
-                        </a>
+                                <slot
+                                    v-if="hasDefaultSlot"
+                                    :option="option"
+                                    :index="index"
+                                />
+                                <span v-else>
+                                    {{ getValue(option, true) }}
+                                </span>
+                            </a>
+                        </label>
                 </template>
             </b-autocomplete>
         </b-field>
